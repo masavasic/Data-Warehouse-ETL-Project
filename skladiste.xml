@@ -1,0 +1,144 @@
+<Schema name="SemaSkladiste">
+  <Cube name="Prodaja" visible="true" cache="true" enabled="true">
+    <Table name="prodaja">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdVreme" highCardinality="false" name="Vreme">
+      <Hierarchy name="VremeHijerarhija" visible="true" hasAll="true" primaryKey="IdVreme">
+        <Table name="vreme">
+        </Table>
+        <Level name="Godina" visible="true" column="Godina" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Mesec" visible="true" column="Mesec" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Dan" visible="true" column="Dan" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdKategorija" highCardinality="false" name="Kategorija">
+      <Hierarchy name="KategorijaHijerarhija" visible="true" hasAll="true" primaryKey="IdKategorija">
+        <Table name="kategorija">
+        </Table>
+        <Level name="Naziv" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdMestoKupca" highCardinality="false" name="MestoKupca">
+      <Hierarchy name="MestoKupcaHijerarhija" visible="true" hasAll="true" primaryKey="IdMesto">
+        <Table name="mesto">
+        </Table>
+        <Level name="Mesto" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdMestoProdavca" highCardinality="false" name="MestoProdavca">
+      <Hierarchy name="MestoProdavcaHijerarhija" visible="true" hasAll="true" primaryKey="IdMesto">
+        <Table name="mesto">
+        </Table>
+        <Level name="Mesto" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdPolKupca" highCardinality="false" name="PolKupca">
+      <Hierarchy name="PolHijerarhija" visible="true" hasAll="true" primaryKey="IdPol">
+        <Table name="pol">
+        </Table>
+        <Level name="Pol" visible="true" column="Pol" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdUzrastKupca" highCardinality="false" name="UzrastKupca">
+      <Hierarchy name="UzrastHijerarhija" visible="true" hasAll="true" primaryKey="IdUzrast">
+        <Table name="uzrast">
+        </Table>
+        <Level name="Opseg" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Iznos" column="Iznos" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Kolicina" column="Kolicina" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Broj stavki" column="IdProdaja" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Recenzija" visible="true" cache="true" enabled="true">
+    <Table name="recenzija">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdVreme" highCardinality="false" name="Vreme">
+      <Hierarchy name="VremeHijerarhija" visible="true" hasAll="true" primaryKey="IdVreme">
+        <Table name="vreme">
+        </Table>
+        <Level name="Godina" visible="true" column="Godina" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Mesec" visible="true" column="Mesec" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Dan" visible="true" column="Dan" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdArtikal" highCardinality="false" name="Artikal">
+      <Hierarchy name="ArtikalHijerarhija" visible="true" hasAll="true" primaryKey="IdArtikal">
+        <Table name="artikal">
+        </Table>
+        <Level name="Artikal" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdKategorija" highCardinality="false" name="Kategorija">
+      <Hierarchy name="KategorijaHijerarhija" visible="true" hasAll="true" primaryKey="IdKategorija">
+        <Table name="kategorija">
+        </Table>
+        <Level name="Kategorija" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdProdavac" highCardinality="false" name="Prodavac">
+      <Hierarchy name="ProdavacHijerarhija" visible="true" hasAll="true" primaryKey="IdProdavac">
+        <Table name="prodavac">
+        </Table>
+        <Level name="Email" visible="true" column="Email" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdMestoProdavca" highCardinality="false" name="MestoProdavca">
+      <Hierarchy name="MestoProdavcaHijerarhija" visible="true" hasAll="true" primaryKey="IdMesto">
+        <Table name="mesto">
+        </Table>
+        <Level name="Naziv" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdPolKupca" highCardinality="false" name="PolKupca">
+      <Hierarchy name="PolHijerarhija" visible="true" hasAll="true" primaryKey="IdPol">
+        <Table name="pol">
+        </Table>
+        <Level name="Pol" visible="true" column="Pol" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdUzrastKupca" highCardinality="false" name="UzrastKupca">
+      <Hierarchy name="UzrastHijerarhija" visible="true" hasAll="true">
+        <Table name="uzrast">
+        </Table>
+        <Level name="Naziv" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="IdMestoKupca" highCardinality="false" name="MestoKupca">
+      <Hierarchy name="MestoHijerarhija" visible="true" hasAll="true" primaryKey="IdMesto">
+        <Table name="mesto">
+        </Table>
+        <Level name="Naziv" visible="true" column="Naziv" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Prosecna ocena" column="Ocena" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Broj recenzija" column="BrojRecenzija" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Maksimalna ocena" column="Ocena" aggregator="max" visible="true">
+    </Measure>
+    <Measure name="Minimalna ocena" column="Ocena" aggregator="min" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
